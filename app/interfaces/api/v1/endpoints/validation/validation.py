@@ -25,6 +25,7 @@ async def get_ip_info_v1(controller: AuthenticationController = Depends(authenti
     # except Exception as e:
     #     # Handle any other unexpected errors
     #     raise HTTPException(status_code=500, detail=str(e))
+#implement in other service
 
 @router_v1.post("/validateLocation")
 async def validate_location():
