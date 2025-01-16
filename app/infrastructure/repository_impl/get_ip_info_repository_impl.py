@@ -1,5 +1,4 @@
-from app.domain.entities.ip_info_domain import IPInfoDomain
-from app.domain.services.get_ip_info_service import GetIpInfoService
+
 
 # src/infrastructure/services/get_ip_info_repository_impl.py
 
@@ -8,7 +7,8 @@ import httpx
 from fastapi import Depends
 
 from app.infrastructure.di.async_client import get_client
-
+from app.domain.entities.ip_info_domain import IPInfoDomain
+from app.domain.services.get_ip_info_service import GetIpInfoService
 
 class GetIpInfoServiceImpl(GetIpInfoService):
     def __init__(self, client: httpx.AsyncClient = Depends(get_client)):

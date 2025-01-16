@@ -1,5 +1,7 @@
 import httpx
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends
+
+
 
 from app.infrastructure.di.controllers import authentication_controller
 from app.interfaces.controllers.authentication_controller import AuthenticationController

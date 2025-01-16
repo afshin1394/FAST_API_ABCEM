@@ -1,20 +1,15 @@
-# Use an official Python runtime as a parent image
-FROM python:3.10-slim-buster
+# protected_service/Dockerfile
 
-# Set a working directory
+FROM python:3.10-slim
+
 WORKDIR /app
 
-# Copy the requirements file into the container
-COPY requirements.txt .
-
-# Install dependencies
+COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy your FastAPI application code into the container
-COPY ./app ./app
+COPY app /app/app
 
-# Expose the port FastAPI will run on
-EXPOSE 8000
+# Expose port 8002 for clarity
+EXPOSE 8002
 
-# Start FastAPI using uvicorn
-CMD ["uvicorn", "abcem.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8002"]
