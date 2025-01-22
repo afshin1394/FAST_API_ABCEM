@@ -1,9 +1,15 @@
-from fastapi import APIRouter, Depends, HTTPException
+import logging
+from typing import List
 
-from app.infrastructure.di.controllers import authentication_controller
-from app.interfaces.controllers.authentication_controller import AuthenticationController
-from app.interfaces.dto.request.authenticate_request import AuthenticateRequest
-from app.interfaces.dto.response.authenticate_response import AuthenticateResponse
+from fastapi import APIRouter, Depends, HTTPException,logger
+
+from abcem.app.infrastructure.di.controllers import authentication_controller, get_create_user_controller
+from abcem.app.interfaces.controllers.authentication_controller import AuthenticationController
+from abcem.app.interfaces.controllers.user_controller import UserController
+from abcem.app.interfaces.dto.request.authenticate_request import AuthenticateRequest
+from abcem.app.interfaces.dto.request.user_create_request import CreateUserRequest
+from abcem.app.interfaces.dto.response.authenticate_response import AuthenticateResponse
+from abcem.app.interfaces.dto.response.server_response import SpeedTestServerResponse
 
 # Router for API version 1
 router_v1 = APIRouter(
@@ -22,5 +28,15 @@ async def login_v1(authenticate_request: AuthenticateRequest,
 
 
 @router_v1.get("/verify")
-def verify_v1():
+async def verify_v1():
     return [{"verify": "true"}]
+
+@router_v1.post("/createUser",response_model=str)
+async def create_user_v1(create_user_request : CreateUserRequest,create_user_controller : UserController = Depends(get_create_user_controller)):
+    logger.logger.debug(msg= f'create_user_v1 {create_user_request}')
+    return await create_user_controller.create_user(create_user_request)
+
+@router_v1.post("/insertSpeed", response_model = List[SpeedTestServerResponse])
+async def speed_fetch_v1(user_controller : UserController = Depends(get_create_user_controller)) :
+    logger.logger.debug(msg= f'insertSpeed {user_controller}')
+    return await user_controller.speed_test_init()

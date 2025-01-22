@@ -1,7 +1,7 @@
 
 from abc import ABC, abstractmethod
 
-from app.domain.entities.ip_info_domain import IPInfoDomain
+from abcem.app.domain.entities.ip_info_domain import IPInfoDomain
 
 
 class GetIpInfoService(ABC):

@@ -1,6 +1,6 @@
 # src/infrastructure/mappers/ip_info_mapper.py
-from app.domain.entities.ip_info_domain import IPInfoDomain
-from app.infrastructure.remote.dto.ip_info_dto import IpInfoDTO
+from abcem.app.domain.entities.ip_info_domain import IPInfoDomain
+from abcem.app.infrastructure.remote.dto.ip_info_dto import IpInfoDTO
 
 
 def map_dto_to_domain(dto: IpInfoDTO) -> IPInfoDomain:

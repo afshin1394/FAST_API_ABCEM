@@ -1,7 +1,7 @@
-from app.application.commands.authenticate_command import AuthenticateCommand
-from app.application.shared.command_handler import CommandHandler, C
-from app.domain.events.authenticated_event import AuthenticatedEvent
-from app.domain.services.get_ip_info_service import GetIpInfoService
+from abcem.app.application.commands.authenticate_command import AuthenticateCommand
+from abcem.app.application.shared.command_handler import CommandHandler, C
+from abcem.app.domain.events.authenticated_event import AuthenticatedEvent
+from abcem.app.domain.services.get_ip_info_service import GetIpInfoService
 
 
 def generate_refresh_token(msisdn: str) -> str:

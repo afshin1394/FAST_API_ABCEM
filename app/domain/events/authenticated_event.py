@@ -1,4 +1,4 @@
-from app.domain.events.event import Event
+from abcem.app.domain.events.event import Event
 
 
 class AuthenticatedEvent(Event):

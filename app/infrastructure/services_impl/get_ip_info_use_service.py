@@ -1,5 +1,5 @@
-from app.domain.entities.ip_info_domain import IPInfoDomain
-from app.domain.services.get_ip_info_service import GetIpInfoService
+from abcem.app.domain.entities.ip_info_domain import IPInfoDomain
+from abcem.app.domain.services.get_ip_info_service import GetIpInfoService
 
 
 class GetIpInfoServiceImpl:

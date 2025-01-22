@@ -1,8 +1,8 @@
-from app.application.commands.authenticate_command import AuthenticateCommand
-from app.application.mediator import Mediator
-from app.domain.events.authenticated_event import AuthenticatedEvent
-from app.interfaces.dto.request.authenticate_request import AuthenticateRequest
-from app.interfaces.dto.response.authenticate_response import AuthenticateResponse
+from abcem.app.application.commands.authenticate_command import AuthenticateCommand
+from abcem.app.application.mediator import Mediator
+from abcem.app.domain.events.authenticated_event import AuthenticatedEvent
+from abcem.app.interfaces.dto.request.authenticate_request import AuthenticateRequest
+from abcem.app.interfaces.dto.response.authenticate_response import AuthenticateResponse
 
 
 class AuthenticationController:

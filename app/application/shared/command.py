@@ -4,6 +4,8 @@ from pydantic import BaseModel, Field
 
 
 class Command(BaseModel):
+
+
     """
     A base class for commands with optional correlation ID and cache invalidation keys.
 

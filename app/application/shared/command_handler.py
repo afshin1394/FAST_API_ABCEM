@@ -3,7 +3,7 @@
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, Optional
 
-from app.domain.events.event import Event
+from abcem.app.domain.events.event import Event
 
 
 # Define a base Command class if not already defined

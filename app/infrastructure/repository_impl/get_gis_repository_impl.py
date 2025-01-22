@@ -1,7 +1,7 @@
 import math
 from typing import Tuple, List
 
-from app.domain.services.get_gis_service import GetGISService
+from abcem.app.domain.services.get_gis_service import GetGISService
 
 
 class GetGISServiceImpl(GetGISService):

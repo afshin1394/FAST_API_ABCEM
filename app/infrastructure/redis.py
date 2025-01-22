@@ -3,7 +3,7 @@
 import aioredis
 from typing import Optional
 
-from app.core.config import settings
+from abcem.app.core.config import settings
 
 
 class RedisClient:

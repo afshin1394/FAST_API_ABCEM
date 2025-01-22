@@ -6,9 +6,9 @@ from typing import Optional
 import httpx
 from fastapi import Depends
 
-from app.infrastructure.di.async_client import get_client
-from app.domain.entities.ip_info_domain import IPInfoDomain
-from app.domain.services.get_ip_info_service import GetIpInfoService
+from abcem.app.infrastructure.di.async_client import get_client
+from abcem.app.domain.entities.ip_info_domain import IPInfoDomain
+from abcem.app.domain.services.get_ip_info_service import GetIpInfoService
 
 class GetIpInfoServiceImpl(GetIpInfoService):
     def __init__(self, client: httpx.AsyncClient = Depends(get_client)):
