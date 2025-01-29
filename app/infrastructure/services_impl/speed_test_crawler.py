@@ -1,6 +1,5 @@
 import asyncio
 import aiohttp
-import json
 import os
 from typing import List, Iterable
 from abcem.app.domain.entities.speed_test_server_domain import SpeedTestServerDomain

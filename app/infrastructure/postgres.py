@@ -1,5 +1,4 @@
 import logging
-from keyword import kwlist
 
 from abcem.app.core.config import settings
 from fastapi import logger
@@ -9,7 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
 
 
 
-DATABASE_URL = f"postgresql+asyncpg://{settings.POSTGRES_USER}:{settings.POSTGRES_PASSWORD}@{settings.POSTGRES_HOST}:{settings.POSTGRES_PORT}/{settings.POSTGRES_DB}"  # Replace with your database URL
+DATABASE_URL = f"postgresql+asyncpg://{settings.postgres_user}:{settings.postgres_password}@{settings.postgres_host}:{settings.postgres_port}/{settings.postgres_db}"  # Replace with your database URL
 
 def get_async_engine() -> AsyncEngine:
     """Return async database engine."""
@@ -35,7 +34,7 @@ async def initialize_database() -> None:
     async_engine = get_async_engine()
     async with async_engine.begin() as async_conn:
         await async_conn.run_sync(Base.metadata.create_all)
-        logger.logger.log(msg="Initializing database was successfull.",level=logging.INFO)
+        logger.logger.log(msg="Initializing database was successful.",level=logging.INFO)
 
 
 

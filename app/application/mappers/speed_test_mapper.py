@@ -1,6 +1,8 @@
 from typing import List , Sequence
 from abcem.app.infrastructure.schemas.speed_test_servers_table import SpeedTestServerTable  # Infrastructure model
 from abcem.app.domain.entities.speed_test_server_domain  import SpeedTestServerDomain  # Domain model
+from abcem.app.interfaces.dto.response.server_response import SpeedTestServerResponse
+
 
 def to_domain(model: SpeedTestServerTable) -> SpeedTestServerDomain:
     return SpeedTestServerDomain(
@@ -31,6 +33,27 @@ def from_domain(domain: SpeedTestServerDomain) -> SpeedTestServerTable:
         lon=domain.lon,
         host=domain.host,
         last_updated=domain.last_updated,
+
     )
 def from_domain_list(domains: List[SpeedTestServerDomain]) -> List[SpeedTestServerTable]:
     return [from_domain(domain) for domain in domains]
+
+
+
+def to_response(domain: SpeedTestServerDomain) -> SpeedTestServerResponse:
+    return SpeedTestServerResponse(
+        id=domain.id,
+        url=domain.url,
+        distance=domain.distance,
+        sponsor=domain.sponsor,
+        name=domain.name,
+        country=domain.country,
+        lat=domain.lat,
+        lon=domain.lon,
+        host=domain.host,
+        cc=domain.cc,
+    )
+
+
+def to_response_list(domains: List[SpeedTestServerDomain]) -> List[SpeedTestServerResponse]:
+    return [to_response(domain) for domain in domains]

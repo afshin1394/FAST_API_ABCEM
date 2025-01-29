@@ -14,7 +14,7 @@ class RedisClient:
         self.redis = None
 
     @classmethod
-    async def get_instance(cls, redis_url: str = settings.REDIS_URL) -> 'RedisClient':
+    async def get_instance(cls, redis_url: str = f'{settings.redis_url}') -> 'RedisClient':
         if cls._instance is None:
             cls._instance = RedisClient(redis_url)
             cls._instance.redis = await aioredis.from_url(redis_url, decode_responses=True)

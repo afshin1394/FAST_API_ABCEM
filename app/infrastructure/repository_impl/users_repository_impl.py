@@ -1,6 +1,6 @@
 from typing import List
 
-from abcem.app.application.mappers.users_mapper import to_domain_list, from_domain_list, from_domain
+from abcem.app.application.mappers.users_mapper import to_domain_list, from_domain
 from abcem.app.domain.entities.users_domain import UserDomain
 from abcem.app.domain.repositories.users_repository import UsersRepository
 from abcem.app.infrastructure.schemas.users_table import UsersTable

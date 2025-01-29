@@ -4,7 +4,7 @@ from pydantic import BaseModel
 from datetime import datetime
 
 class SpeedTestServerDomain(BaseModel):
-    server_id: str
+    id: str
     sponsor: str
     name: str
     country: str
@@ -12,7 +12,7 @@ class SpeedTestServerDomain(BaseModel):
     lon: str
     url: str
     host:str
-    distance:int
+    distance:float
     cc:str
 
    # Ensure the data type is consistent

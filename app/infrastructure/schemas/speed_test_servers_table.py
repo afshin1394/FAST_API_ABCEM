@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import Column, String,  TIMESTAMP,Integer
+from sqlalchemy import Column, String,  TIMESTAMP,FLOAT
 from datetime import datetime
 
 from abcem.app.infrastructure.schemas.base_db_model import BaseDBModel, Base
@@ -16,7 +16,7 @@ class SpeedTestServerTable(Base,BaseDBModel):
     lon = Column(String, nullable=True)
     url = Column(String, nullable=True)
     host = Column(String, nullable=True)
-    distance = Column(Integer, nullable=True)
+    distance = Column(FLOAT, nullable=True)
     cc = Column(String, nullable=True)
     last_updated = Column(TIMESTAMP, default=datetime.now(), onupdate=datetime.now())
 

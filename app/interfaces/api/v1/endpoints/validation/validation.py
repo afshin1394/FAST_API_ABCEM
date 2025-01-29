@@ -1,10 +1,13 @@
 from fastapi import APIRouter,Depends,HTTPException
 
+from abcem.app.application.mappers.speed_test_mapper import to_response_list
 from abcem.app.infrastructure.di.controllers import authentication_controller
+from abcem.app.infrastructure.di.redis_client import get_redis_instance
 from abcem.app.infrastructure.di.speed_test import get_speed_test
+from abcem.app.infrastructure.redis import RedisClient
 from abcem.app.infrastructure.services_impl.speed_test_servers import Speedtest, SpeedtestException
 from abcem.app.interfaces.controllers.authentication_controller import AuthenticationController
-from abcem.app.interfaces.dto.response.server_response import ServersResponse
+from abcem.app.interfaces.dto.response.server_response import ServersResponse, SpeedTestServerResponse
 
 router_v1 = APIRouter(
     prefix="/validation",
@@ -25,7 +28,7 @@ async def get_servers(speed_test: Speedtest = Depends(get_speed_test)) -> Server
 
     # Validate and create Server instances
     try:
-        validated_servers = [Server(**server) for server in servers_list]
+        validated_servers = [SpeedTestServerResponse(**server) for server in servers_list]
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Data validation error: {e}")
 
@@ -45,9 +48,12 @@ async def get_ip_info_v1(controller: AuthenticationController = Depends(authenti
     # except Exception as e:
     #     # Handle any other unexpected errors
     #     raise HTTPException(status_code=500, detail=str(e))
-#implement in other service
+    #implement in other service
 
-@router_v1.post("/validateLocation")
-async def validate_location():
-  pass
+@router_v1.post("/test_redis")
+async def validate_location(redis_client : RedisClient = Depends(get_redis_instance)):
+    await redis_client.set("test","1")
+    return await redis_client.get("test")
+
+
 
